@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import MovieList from "../../components/MovieList/MovieList";
 import Loader from "../../components/Loader/Loader";
 
-import { filmsRequest } from "../../films";
+import { filmsRequest } from "../../services/films";
 
 import css from "./HomePage.module.css";
 

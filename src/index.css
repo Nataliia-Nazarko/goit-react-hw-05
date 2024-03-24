@@ -21,11 +21,16 @@ a {
 body {
   min-width: 320px;
   min-height: 100vh;
+  margin: 0;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+ul {
+  list-style-type: square;
 }
 
 button {

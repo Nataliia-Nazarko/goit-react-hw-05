@@ -1,0 +1,35 @@
+.listCast {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  list-style-type: none;
+  padding-inline-start: 0;
+}
+
+.castImg {
+  height: 350px;
+}
+
+.listItemCast {
+  max-width: 250px;
+  min-height: 350px;
+  width: 100%;
+  height: 100%;
+}
+
+.nameCast {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.miniAccent {
+  font-weight: 600;
+}
+
+.infoText {
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--red-background);
+  border: 1px grey;
+}
