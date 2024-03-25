@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Loader from "../../components/Loader/Loader";
 import { useSearchParams } from "react-router-dom";
+import toast from "react-hot-toast";
 
 import { filmSearch } from "../../services/films";
 
@@ -14,8 +15,6 @@ export default function MoviesPage() {
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState(false);
 
-  const query = searchParams.get("query");
-
   const handleSearch = (e) => {
     e.preventDefault();
     const value = e.target.elements.search.value;
@@ -26,25 +25,29 @@ export default function MoviesPage() {
     e.currentTarget.reset();
   };
 
+  const query = searchParams.get("query" ?? "");
+
   useEffect(() => {
-    if (!query) {
-      return;
-    }
+    if (!searchParams) return;
 
     const fetchData = async () => {
       setLoader(true);
+      setError(null);
+      setMovies([]);
       try {
         const request = await filmSearch(query);
         setMovies(request.results);
       } catch (error) {
-        setError(true);
+        setError(error.message);
+        toast.error("Sorry, there is no movie matching your search query!");
       } finally {
         setLoader(false);
       }
     };
 
+    if (!query) return;
     fetchData();
-  }, [query]);
+  }, [query, error, searchParams]);
 
   return (
     <div className={css.submitFormContainer}>
